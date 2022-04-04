@@ -1,0 +1,14 @@
+
+%% gaussuan filter
+sigma=W/6;
+gaussianfilter=fspecial('guassian',[1,W],sigma);
+h = fspecial('gaussian',[1,W],sigma) ;
+
+%% box filter
+ygbox=conv(ygnoisy,ones(W,1)/W,'same');
+
+%% high pass filter
+% firl=(windows size, cutoff frequency, filter type)
+filt=fir1(W,5000/(Fs/2),'high')
+yfilt=conv(y_rev,filt,'same');
+
